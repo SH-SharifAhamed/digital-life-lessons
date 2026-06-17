@@ -110,7 +110,7 @@ export default function Footer() {
                 for meaningful digital experiences.
               </p>
 
-              {/* Newsletter */}
+              
               <div className="space-y-3">
                 <p className="text-xs font-medium text-neutral-500 uppercase tracking-widest">
                   Subscribe to our newsletter
@@ -140,7 +140,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Contact Info - 3 cols */}
+            {/* Contact Info */}
             <div className="lg:col-span-3 space-y-6">
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
                 <span className="w-8 h-px bg-indigo-500/50" />
@@ -192,7 +192,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Legal Links - 2 cols */}
+            {/* Legal Links */}
             <div className="lg:col-span-2 space-y-6">
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
                 <span className="w-8 h-px bg-indigo-500/50" />
@@ -213,7 +213,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Social & Status - 2 cols */}
+            {/* Social & Status */}
             <div className="lg:col-span-2 space-y-6">
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
                 <span className="w-8 h-px bg-indigo-500/50" />
@@ -226,7 +226,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white hover:border-indigo-500/30 hover:bg-gradient-to-br hover:from-indigo-600/20 hover:to-violet-600/20 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:-translate-y-1 transition-all duration-300"
+                    className="group w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white hover:border-indigo-500/30 hover:bg-linear-to-br hover:from-indigo-600/20 hover:to-violet-600/20 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:-translate-y-1 transition-all duration-300"
                     aria-label={social.name}
                   >
                     {social.icon}
