@@ -82,10 +82,22 @@ export default function Navbar() {
               id="nav-logo"
               className="flex items-center gap-2 font-sans font-bold text-xl text-teal-600 hover:text-teal-700 transition-colors mr-8"
             >
-              <div className="p-1.5 bg-teal-50 rounded-lg text-teal-600">
-                <GraduationCap className="h-6 w-6" />
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-indigo-500 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                  <div className="relative w-11 h-11 rounded-xl bg-linear-to-br from-indigo-500 via-violet-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-xl shadow-xl">
+                    D
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold tracking-tight leading-none">
+                    Digital<span className="text-indigo-400">Life</span>
+                  </span>
+                  <span className="text-[10px] text-neutral-600 uppercase tracking-[0.3em] mt-0.5">
+                    Life Lessons Platform
+                  </span>
+                </div>
               </div>
-              <span className="tracking-tight">LessonSphere</span>
             </Link>
 
             {/* Desktop Navigation Link Entries */}
