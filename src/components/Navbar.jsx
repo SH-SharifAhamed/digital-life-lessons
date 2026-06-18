@@ -294,14 +294,21 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
             ) : (
-              <button
-                onClick={() => signIn()}
-                id="btn-desktop-login"
-                className="flex items-center gap-1.5 px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-medium hover:bg-teal-700 shadow-sm transition-all cursor-pointer"
-              >
-                <LogIn className="h-4 w-4" />
-                Login / Signup
-              </button>
+              
+              <>
+                <Link
+                  href="/signup"
+                  className="ml-2 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-medium hover:bg-purple-700 shadow-sm transition-all cursor-pointer"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href="/login"
+                  className="ml-2 px-4 py-2 bg-gray-600 text-white rounded-lg text-sm font-medium hover:bg-gray-700 shadow-sm transition-all cursor-pointer"
+                >
+                  Login
+                </Link>
+              </>
             )}
           </div>
 
@@ -456,14 +463,21 @@ export default function Navbar() {
                   </button>
                 </div>
               ) : (
-                <button
-                  onClick={login}
-                  id="btn-mobile-login"
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-sm font-medium transition-all shadow-sm"
-                >
-                  <LogIn className="h-4 w-4" />
-                  Login / Signup
-                </button>
+                
+                <>
+                  <Link
+                    href="/signup"
+                    className="ml-2 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-medium hover:bg-purple-700 shadow-sm transition-all cursor-pointer"
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    href="/login"
+                    className="ml-2 px-4 py-2 bg-gray-600 text-white rounded-lg text-sm font-medium hover:bg-gray-700 shadow-sm transition-all cursor-pointer"
+                  >
+                    Login
+                  </Link>
+                </>
               )}
             </div>
           </motion.div>
