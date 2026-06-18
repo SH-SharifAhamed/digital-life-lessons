@@ -9,8 +9,8 @@ const DigitalLifeLessonsPage = () => {
           <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 relative overflow-hidden">
 
                {/* Ambient Glow Background */}
-               <div className="absolute top-[-15%] left-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[140px] animate-pulse" />
-               <div className="absolute bottom-[-15%] right-[-10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[140px] animate-pulse delay-1000" />
+               <div className="absolute top-[-15%] left-[-10%] w-125 h-125 bg-purple-500/20 rounded-full blur-[140px] animate-pulse" />
+               <div className="absolute bottom-[-15%] right-[-10%] w-125 h-125 bg-blue-500/20 rounded-full blur-[140px] animate-pulse delay-1000" />
 
                {/* Floating Icons */}
                <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
@@ -29,9 +29,9 @@ const DigitalLifeLessonsPage = () => {
                          {/* Icon Section */}
                          <div className="flex justify-center mb-10">
                               <div className="relative">
-                                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 blur-md opacity-60 animate-ping" />
+                                   <div className="absolute inset-0 rounded-full bg-linear-to-r from-purple-500 to-blue-500 blur-md opacity-60 animate-ping" />
 
-                                   <div className="relative p-7 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/10 border border-purple-500/30 shadow-[0_0_50px_rgba(168,85,247,0.35)]">
+                                   <div className="relative p-7 rounded-full bg-linear-to-br from-purple-500/20 to-blue-500/10 border border-purple-500/30 shadow-[0_0_50px_rgba(168,85,247,0.35)]">
                                         <MdLightbulb className="text-7xl text-purple-300 drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]" />
                                    </div>
                               </div>
@@ -40,7 +40,7 @@ const DigitalLifeLessonsPage = () => {
                          {/* Title */}
                          <h1 className="text-5xl md:text-6xl font-black text-center leading-tight">
                              404 {" "}
-                              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                              <span className="bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                                    Page Not Found
                               </span>
                          </h1>
@@ -74,7 +74,7 @@ const DigitalLifeLessonsPage = () => {
 
                               <Link
                                    href="/lessons"
-                                   className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-600 font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
+                                   className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-linear-to-r from-purple-500 to-blue-600 font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
                               >
                                    <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                    <FaArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
