@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Digital Life Lessons
 
-## Getting Started
+## 📖 Project Overview
 
-First, run the development server:
+**Digital Life Lessons** is a community-driven platform where users can share, discover, and preserve valuable life experiences, personal insights, and lessons learned from real-life situations. The platform allows users to create, manage, save, and explore life lessons while providing premium content access through a subscription system.
+
+## 🚀 Live Website
+
+🔗 Live URL: http://localhost:3000
+
+## 🎯 Purpose
+
+The purpose of this platform is to create a digital space where people can learn from others' experiences and wisdom. Users can contribute life lessons related to personal growth, career, relationships, mindset, and other important aspects of life.
+
+## ✨ Key Features
+
+### 🔐 Authentication & Authorization
+
+* Email/Password Authentication
+* Google Sign-In
+* Protected Routes
+* Role-Based Access (User & Admin)
+* Premium User Support
+
+### 📚 Life Lesson Management
+
+* Create New Life Lessons
+* Update Existing Lessons
+* Delete Lessons
+* Public & Private Visibility Control
+* Free & Premium Lesson Access
+
+### ❤️ User Engagement
+
+* Like Lessons
+* Save Lessons to Favorites
+* Comment System
+* Report Inappropriate Content
+* Share Lessons on Social Media
+
+### 👨‍💼 Admin Features
+
+* Manage Users
+* Manage Lessons
+* Review Reported Content
+* Feature Lessons on Homepage
+* Platform Analytics Dashboard
+
+### 💳 Premium Subscription
+
+* Stripe Payment Integration
+* Lifetime Premium Access
+* Premium Lesson Creation
+* Premium Content Access
+
+### 🔍 Advanced Functionality
+
+* Search Lessons
+* Filter by Category
+* Filter by Emotional Tone
+* Sort by Newest & Most Saved
+* Pagination Support
+
+### 📱 Responsive Design
+
+* Mobile Friendly
+* Tablet Friendly
+* Desktop Optimized
+* Modern Dashboard UI
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+* Next.js
+* Tailwind CSS
+* DaisyUI
+* Framer Motion
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+
+### Authentication
+
+* Better Auth
+
+### Payment Gateway
+
+* Stripe
+
+## 📦 NPM Packages Used
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+better-auth
+mongodb
+mongoose
+stripe
+axios
+react-hot-toast
+sweetalert2
+framer-motion
+react-icons
+react-share
+swiper
+recharts
+date-fns
+react-hook-form
+jsonwebtoken
+cors
+dotenv
+express
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Install Dependencies
+npm install
 
-## Learn More
+# Run Development Server
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Developed By
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sharif Ahamed
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A platform dedicated to preserving and sharing valuable life lessons for future generations.
