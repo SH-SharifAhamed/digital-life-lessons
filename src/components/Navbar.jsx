@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from "framer-motion";
-import { useSession, signIn, signOut } from "@/lib/auth-client";
+import { useSession, signIn, signOut, authClient } from "@/lib/auth-client";
 
 import { 
   Home, 
@@ -21,6 +21,8 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useRouter } from "next/navigation";
+import Image from 'next/image';
 
 export default function Navbar() {
   // const { user, plan, login, logout } = useAuth();
@@ -31,6 +33,11 @@ export default function Navbar() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
   const plan = session?.user?.plan;
+
+   const handleLogOut = async () => {
+     await authClient.signOut();
+     router.push("/");
+   };
 
 
   // Close menus on path transition
@@ -57,21 +64,18 @@ export default function Navbar() {
 
   const isActive = (path) => pathname === path;
 
+
   // Nav links configuration array
   const publicLinks = [
     { name: 'Home', path: '/', icon: Home },
     { name: 'Public Lessons', path: '/public-lessons', icon: BookOpen },
   ];
 
-  const protectedLinks = [
-    { name: 'Add Lesson', path: '/dashboard/add-lesson', icon: PlusCircle },
-    { name: 'My Lessons', path: '/dashboard/my-lessons', icon: GraduationCap },
-  ];
 
   return (
     <nav
       id="app-navbar"
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300"
+      className="sticky top-0 z-50 bg-white/50 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -93,7 +97,7 @@ export default function Navbar() {
                   <span className="text-2xl font-bold tracking-tight leading-none">
                     Digital<span className="text-indigo-400">Life</span>
                   </span>
-                  <span className="text-[10px] text-neutral-600 uppercase tracking-[0.3em] mt-0.5">
+                  <span className="text-[10px] text-neutral-800 uppercase tracking-[0.3em] mt-0.5">
                     Life Lessons Platform
                   </span>
                 </div>
@@ -102,18 +106,17 @@ export default function Navbar() {
 
             {/* Desktop Navigation Link Entries */}
             <div className="hidden md:flex space-x-1">
-              {/* Home */}
               <Link
                 href="/"
                 id="link-desktop-home"
                 className={cn(
-                  "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative",
+                  "flex items-center gap-2 px-3 py-2 rounded-lg text-xl font-bold transition-all duration-200 relative",
                   isActive("/")
                     ? "text-teal-700 bg-teal-50/50"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
+                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
-                <Home className="h-4 w-4" />
+                <Home className="h-6 w-6 font-bold" />
                 Home
                 {isActive("/") && (
                   <motion.div
@@ -124,45 +127,15 @@ export default function Navbar() {
                 )}
               </Link>
 
-              {/* Conditional Private Route Entries */}
-              {user &&
-                protectedLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    href={link.path}
-                    id={`link-desktop-${link.name.toLowerCase().replace(/\s+/g, "-")}`}
-                    className={cn(
-                      "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative",
-                      isActive(link.path)
-                        ? "text-teal-700 bg-teal-50/50"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
-                    )}
-                  >
-                    <link.icon className="h-4 w-4" />
-                    {link.name}
-                    {isActive(link.path) && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-3 right-3 h-0.5 bg-teal-600"
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </Link>
-                ))}
-
               {/* Public Lessons */}
               <Link
                 href="/public-lessons"
                 id="link-desktop-public-lessons"
                 className={cn(
-                  "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative",
+                  "flex items-center gap-2 px-3 py-2 rounded-lg text-xl font-bold transition-all duration-200 relative",
                   isActive("/public-lessons")
                     ? "text-teal-700 bg-teal-50/50"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
+                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
                 <BookOpen className="h-4 w-4" />
@@ -219,14 +192,16 @@ export default function Navbar() {
                   className="flex items-center gap-2 p-1.5 rounded-full hover:bg-gray-50 border border-gray-100 focus:outline-none transition-all"
                   aria-expanded={isDropdownOpen}
                 >
-                  <img
-                    src={user.avatarUrl}
-                    alt={user.name}
+                  <Image
+                    src={user?.image}
+                    alt={user?.name}
+                    width={40}
+                    height={40}
                     className="h-8 w-8 rounded-full object-cover ring-2 ring-teal-50"
                     referrerPolicy="no-referrer"
                   />
                   <span className="text-sm font-medium text-gray-700 px-1 hidden lg:inline">
-                    {user.name}
+                    {user?.name}
                   </span>
                   <ChevronDown
                     className={cn(
@@ -254,10 +229,10 @@ export default function Navbar() {
                           id="dropdown-user-name"
                           className="text-sm font-bold text-gray-800 truncate"
                         >
-                          {user.name}
+                          {user?.name}
                         </p>
                         <p className="text-xs text-gray-500 truncate">
-                          {user.email}
+                          {user?.email}
                         </p>
                       </div>
 
@@ -282,7 +257,7 @@ export default function Navbar() {
                       <hr className="my-1 border-gray-50" />
 
                       <button
-                        onClick={logout}
+                        onClick={handleLogOut}
                         id="dropdown-btn-logout"
                         className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors text-left"
                       >
@@ -294,7 +269,6 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
             ) : (
-              
               <>
                 <Link
                   href="/signup"
@@ -357,7 +331,7 @@ export default function Navbar() {
                 Home
               </Link>
 
-              {/* Private Routes if logged in */}
+              {/* Private Routes if logged in
               {user &&
                 protectedLinks.map((link) => (
                   <Link
@@ -374,7 +348,7 @@ export default function Navbar() {
                     <link.icon className="h-5 w-5 text-gray-400" />
                     {link.name}
                   </Link>
-                ))}
+                ))} */}
 
               {/* Public Lessons */}
               <Link
@@ -411,59 +385,76 @@ export default function Navbar() {
             <div className="border-t border-gray-100 px-4 py-4 bg-gray-50">
               {user ? (
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={user.avatarUrl}
-                      alt={user.name}
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="w-full flex items-center gap-3 text-left"
+                  >
+                    <Image
+                      src={user?.image}
+                      alt={user?.name}
+                      width={40}
+                      height={40}
                       className="h-10 w-10 rounded-full object-cover ring-2 ring-teal-50"
-                      referrerPolicy="no-referrer"
                     />
+
                     <div>
-                      <h4
-                        id="user-mobile-display-name"
-                        className="text-sm font-bold text-gray-800"
-                      >
-                        {user.name}
+                      <h4 className="text-sm font-bold text-gray-800">
+                        {user?.name}
                       </h4>
                       <p className="text-xs text-gray-500 truncate">
-                        {user.email}
+                        {user?.email}
                       </p>
                     </div>
+
                     <span className="ml-auto bg-teal-100 text-teal-800 px-2 py-0.5 rounded text-xs font-semibold uppercase">
                       {plan}
                     </span>
-                  </div>
 
-                  <div className="grid grid-cols-2 gap-2 pt-2">
-                    <Link
-                      href="/profile"
-                      id="link-mobile-profile"
-                      className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                    >
-                      <User className="h-4 w-4 text-gray-400" />
-                      Profile
-                    </Link>
-                    <Link
-                      href="/dashboard"
-                      id="link-mobile-dashboard"
-                      className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                    >
-                      <LayoutDashboard className="h-4 w-4 text-gray-400" />
-                      Dashboard
-                    </Link>
-                  </div>
-
-                  <button
-                    onClick={logout}
-                    id="btn-mobile-logout"
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm font-medium transition-all"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    Sign out
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform",
+                        isDropdownOpen && "rotate-180",
+                      )}
+                    />
                   </button>
+
+                  <AnimatePresence>
+                    {isDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mt-3 overflow-hidden"
+                      >
+                        <Link
+                          href="/profile"
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <User className="h-4 w-4" />
+                          My Profile
+                        </Link>
+
+                        <Link
+                          href="/dashboard"
+                          className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          <LayoutDashboard className="h-4 w-4" />
+                          Dashboard
+                        </Link>
+
+                        <button
+                          onClick={handleLogOut}
+                          id="dropdown-btn-logout"
+                          className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors text-left"
+                        >
+                          <LogOut className="h-4 w-4 text-red-500" />
+                          Log out
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ) : (
-                
                 <>
                   <Link
                     href="/signup"

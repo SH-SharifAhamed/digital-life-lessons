@@ -8,6 +8,8 @@ import {
   Form,
   Input,
   Label,
+  Select,
+  ListBox,
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
@@ -29,7 +31,8 @@ export default function SignUpPage() {
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-
+    console.log(user);
+    
     const { password, confirmPassword } = user;
 
     if (password !== confirmPassword) {
@@ -45,11 +48,7 @@ export default function SignUpPage() {
       image: user.image,
     });
 
-    if (error) {
-      toast.error(error.message || "Registration failed!");
-      setIsLoading(false);
-      return;
-    }
+    console.log({ data, error });
 
     if (data) {
       toast.success("User created successfully!");
@@ -57,7 +56,17 @@ export default function SignUpPage() {
         router.push("/");
       }, 800);
     }
+
+    if (error) {
+      toast.error(error.message || "Registration failed!");
+      setIsLoading(false);
+      return;
+    }
+
   };
+
+
+  
 
   const handleGoogleSignIn = async () => {
     const loadingToast = toast.loading("Redirecting to Google...");
@@ -195,6 +204,42 @@ export default function SignUpPage() {
             />
             <FieldError className="text-red-400 text-xs mt-1" />
           </TextField>
+
+          {/* State */}
+          <Select isRequired className="w-full" name="state">
+            <Label className="text-sm font-medium text-gray-300 mb-1.5 block">
+              State
+            </Label>
+
+            <Select.Trigger className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none flex items-center justify-between">
+              <Select.Value placeholder="Select your rule" />
+              <Select.Indicator />
+            </Select.Trigger>
+
+            <Select.Popover className="mt-2 rounded-xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+              <ListBox className="p-1">
+                <ListBox.Item
+                  id="User"
+                  textValue="User"
+                  className="px-3 py-2 rounded-lg text-gray-200 cursor-pointer hover:bg-purple-500/20 focus:bg-purple-500/20 outline-none flex items-center justify-between"
+                >
+                  User
+                  <ListBox.ItemIndicator />
+                </ListBox.Item>
+
+                <ListBox.Item
+                  id="Admin"
+                  textValue="Admin"
+                  className="px-3 py-2 rounded-lg text-gray-200 cursor-pointer hover:bg-purple-500/20 focus:bg-purple-500/20 outline-none flex items-center justify-between"
+                >
+                  Admin
+                  <ListBox.ItemIndicator />
+                </ListBox.Item>
+              </ListBox>
+            </Select.Popover>
+
+            <FieldError className="text-red-400 text-xs mt-1" />
+          </Select>
 
           {/* Submit Button */}
           <Button
