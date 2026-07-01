@@ -90,7 +90,7 @@ export default function WhyLifeMatters() {
   };
 
   return (
-    <section className="relative py-24 bg-[#0B0F19] overflow-hidden">
+    <section className="w-full min-h-screen relative py-24 bg-[#0B0F19] overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-125 h-125 bg-blue-600/10 rounded-full blur-[120px] animate-pulse" />
         <div

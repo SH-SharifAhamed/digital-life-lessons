@@ -129,14 +129,14 @@ export default function HeroBanner() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70 z-[1]" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-transparent z-1" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/70 z-1" />
 
       {/* Floating Orbs */}
-      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-[100px] animate-pulse" />
+      <div className="absolute inset-0 z-1 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -right-20 w-125 h-125 bg-teal-500/10 rounded-full blur-[100px] animate-pulse" />
         <div
-          className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-[80px] animate-pulse"
+          className="absolute -bottom-20 -left-20 w-100 h-100 bg-violet-500/10 rounded-full blur-[80px] animate-pulse"
           style={{ animationDelay: "1s" }}
         />
       </div>
@@ -161,7 +161,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-teal-500 to-emerald-500 text-white mb-6"
+              className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-linear-to-r from-teal-500 to-emerald-500 text-white mb-6"
             >
               {slides[current].tag}
             </motion.span>
@@ -179,7 +179,7 @@ export default function HeroBanner() {
             >
               <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1]">
                 {slides[current].title}
-                <span className="block bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                <span className="block bg-linear-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
                   {slides[current].highlight}
                 </span>
               </h1>
@@ -210,7 +210,7 @@ export default function HeroBanner() {
           >
             <Link
               href="/public-lessons"
-              className="group inline-flex items-center gap-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 px-8 py-4 rounded-2xl text-white font-semibold shadow-lg shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 bg-linear-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 px-8 py-4 rounded-2xl text-white font-semibold shadow-lg shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5"
             >
               Explore Lessons
               <ArrowRight
@@ -285,9 +285,9 @@ export default function HeroBanner() {
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/5 z-20">
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/5 z-20">
         <motion.div
-          className="h-full bg-gradient-to-r from-teal-400 to-emerald-400"
+          className="h-full bg-linear-to-r from-teal-400 to-emerald-400"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: 7, ease: "linear" }}

@@ -129,18 +129,18 @@ export default function Navbar() {
 
               {/* Public Lessons */}
               <Link
-                href="/public-lessons"
+                href="./public-lessons"
                 id="link-desktop-public-lessons"
                 className={cn(
                   "flex items-center gap-2 px-3 py-2 rounded-lg text-xl font-bold transition-all duration-200 relative",
-                  isActive("/public-lessons")
+                  isActive("./public-lessons")
                     ? "text-teal-700 bg-teal-50/50"
                     : "text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                 )}
               >
                 <BookOpen className="h-4 w-4" />
                 Public Lessons
-                {isActive("/public-lessons") && (
+                {isActive("./public-lessons") && (
                   <motion.div
                     layoutId="activeNavIndicator"
                     className="absolute bottom-0 left-3 right-3 h-0.5 bg-teal-600"
@@ -352,11 +352,11 @@ export default function Navbar() {
 
               {/* Public Lessons */}
               <Link
-                href="/public-lessons"
+                href="./public-lessons"
                 id="link-mobile-public-lessons"
                 className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium transition-all",
-                  isActive("/public-lessons")
+                  isActive("./public-lessons")
                     ? "text-teal-700 bg-teal-50 font-bold"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                 )}
@@ -435,7 +435,7 @@ export default function Navbar() {
                         </Link>
 
                         <Link
-                          href="/dashboard"
+                          href="/deshboard"
                           className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100"
                         >
                           <LayoutDashboard className="h-4 w-4" />

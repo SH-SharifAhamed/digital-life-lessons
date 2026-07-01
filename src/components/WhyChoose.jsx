@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+    <section className="w-full min-h-screen relative py-24 bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
       {/* Background Blur */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
 
           <h2 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Why Choose
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               {" "}
               Digital Life Lessons?
             </span>

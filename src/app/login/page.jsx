@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-export default function SignInPage() {
+export default function LoginPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,6 +63,7 @@ export default function SignInPage() {
       toast.error("Google login failed!");
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-20 bg-[#0f0f1a] relative overflow-hidden">

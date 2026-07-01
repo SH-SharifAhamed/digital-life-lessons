@@ -31,7 +31,6 @@ export default function SignUpPage() {
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-    console.log(user);
     
     const { password, confirmPassword } = user;
 
@@ -46,6 +45,7 @@ export default function SignUpPage() {
       password: user.password,
       name: user.name,
       image: user.image,
+      role: user.role
     });
 
     console.log({ data, error });
@@ -65,9 +65,7 @@ export default function SignUpPage() {
 
   };
 
-
-  
-
+  // login with google
   const handleGoogleSignIn = async () => {
     const loadingToast = toast.loading("Redirecting to Google...");
     try {
@@ -206,7 +204,7 @@ export default function SignUpPage() {
           </TextField>
 
           {/* State */}
-          <Select isRequired className="w-full" name="state">
+          <Select isRequired className="w-full" name="role">
             <Label className="text-sm font-medium text-gray-300 mb-1.5 block">
               State
             </Label>
